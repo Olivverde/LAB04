@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.gallery
+package com.example.myapplication.ui.about_of
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,19 +13,19 @@ import com.example.myapplication.R
 
 class AboutOfFragment : Fragment() {
 
-    private lateinit var galleryViewModel: AboutOfModel
+    private lateinit var AboutOfViewModel: AboutOfModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
+        AboutOfViewModel =
             ViewModelProviders.of(this).get(AboutOfModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
+        val root = inflater.inflate(R.layout.fragment_about_of, container, false)
         val textView: TextView = root.findViewById(R.id.text_gallery)
         val image: ImageView = root.findViewById(R.id.ProfileImage)
-        galleryViewModel.text.observe(this, Observer {
+        AboutOfViewModel.text.observe(this, Observer {
             textView.text = it
             image.setImageResource(R.drawable.profile)
         })

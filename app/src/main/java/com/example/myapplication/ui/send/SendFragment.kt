@@ -22,10 +22,20 @@ class SendFragment : Fragment() {
         sendViewModel =
             ViewModelProviders.of(this).get(SendViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_send, container, false)
-        val textView: TextView = root.findViewById(R.id.text_send)
-        sendViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val txt = view.findViewById<View>(R.id.text_send) as TextView
+
+        val model = ViewModelProviders.of(activity!!).get(SendViewModel::class.java)
+
+        model._text.observe(this, object : Observer<Any>{
+            override fun onChanged(t: Any?) {
+                txt.text = t!!.toString()
+            }
+        })
     }
 }
