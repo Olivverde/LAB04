@@ -51,6 +51,8 @@ class HomeFragment : Fragment() {
 
         val upperButton = view.findViewById<View>(R.id.imageButton) as ImageButton
         val cityButton = view.findViewById<View>(R.id.cityButton) as Button
+        val semucButton = view.findViewById<View>(R.id.semucButton) as Button
+        val floresButton = view.findViewById<View>(R.id.floresButton) as Button
         val editText = view.findViewById<View>(R.id.editText) as EditText
         val textView = view.findViewById<View>(R.id.text_home) as TextView
         var flag = 0
@@ -78,11 +80,22 @@ class HomeFragment : Fragment() {
             fT.replace(R.id.fragment_home, myFragment)
             fT.addToBackStack(null)
             fT.commit()
-
-
-
-
-
+        }
+        semucButton.setOnClickListener {
+            communicator!!.setMsgCommunicator("semuc")
+            val myFragment = SendFragment()
+            val fT = fragmentManager!!.beginTransaction()
+            fT.replace(R.id.fragment_home, myFragment)
+            fT.addToBackStack(null)
+            fT.commit()
+        }
+        floresButton.setOnClickListener {
+            communicator!!.setMsgCommunicator("flores")
+            val myFragment = SendFragment()
+            val fT = fragmentManager!!.beginTransaction()
+            fT.replace(R.id.fragment_home, myFragment)
+            fT.addToBackStack(null)
+            fT.commit()
         }
     }
 }

@@ -28,13 +28,25 @@ class SendFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val txt = view.findViewById<View>(R.id.text_send) as TextView
+        val title = view.findViewById<View>(R.id.text_title) as TextView
+        val phrase = view.findViewById<View>(R.id.text_phrase) as TextView
+        val description = view.findViewById<View>(R.id.text_description) as TextView
 
         val model = ViewModelProviders.of(activity!!).get(SendViewModel::class.java)
 
         model._text.observe(this, object : Observer<Any>{
             override fun onChanged(t: Any?) {
-                txt.text = t!!.toString()
+                title.text = t!!.toString()
+            }
+        })
+        model._textPhrase.observe(this, object : Observer<Any>{
+            override fun onChanged(t: Any?) {
+                phrase.text = t!!.toString()
+            }
+        })
+        model._textDescription.observe(this, object : Observer<Any>{
+            override fun onChanged(t: Any?) {
+                description.text = t!!.toString()
             }
         })
     }
